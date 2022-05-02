@@ -4,14 +4,14 @@ Models for cattle production history records.
 
 from django.db import models
 
-class Cow(models.Model): pass
+class Cattle(models.Model): pass
 
-class Cow(models.Model):
-    '''The cow model for cow production history'''
+class Cattle(models.Model):
+    '''The cattle model for cattle production history'''
     dam_breed=models.CharField(max_length=100)
     sire_breed=models.CharField(max_length=100)
-    dam=models.ForeignKey(Cow,on_delete=models.CASCADE)
-    sire=models.ForeignKey(Cow,on_delete=models.CASCADE)
+    dam=models.ForeignKey(Cattle,on_delete=models.CASCADE)
+    sire=models.ForeignKey(Cattle,on_delete=models.CASCADE)
     description=models.CharField(max_length=256)
     birth_date=models.DateTimeField()
     purchase_date=models.DateTimeField()
@@ -22,9 +22,9 @@ class Cow(models.Model):
 
 
 
-class CowSale(models.Model):
-    '''The sales record of a cow'''
-    cow=models.ForeignKey(Cow,on_delete=models.CASCADE)
+class CattleSale(models.Model):
+    '''The sales record of cattle'''
+    cow=models.ForeignKey(Cattle,on_delete=models.CASCADE)
     date_of_sale=models.DateTimeField()
     reason=models.CharField(max_length=256)
     sale_price=models.FloatField()
